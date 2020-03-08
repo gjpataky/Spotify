@@ -2,12 +2,14 @@ import React from "react";
 import "./Player.css";
 
 const Player = props => {
+  console.log("props"); // for some reason props object's fields are empty, data is not passed.
+  console.log(props);
   const backgroundStyles = {
-    backgroundImage: `url(${props.item.album.images[0].url})`
+    backgroundImage: "url(${props.item.album.images[0].url})"
   };
 
   const progressBarStyles = {
-    width: (props.progress_ms * 100) / props.item.duration_ms + "%"
+    width: 100 // (props.progress_ms * 100) / props.item.duration_ms + "%"
   };
 
   return (
