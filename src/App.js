@@ -48,10 +48,19 @@ class App extends Component {
       success: data => {
         console.log("data:");
         console.log(data);
-        this.setState({
-          item: data.item,
-          is_playing: data.is_playing,
-          progress_ms: data.progress_ms
+        $.ajax({
+          url: "https://api.spotify.com/v1/me/player/currently-playing",
+          type: "GET",
+          headers: {
+            Authorization: "Bearer " + token
+          },
+          success: data => {
+            this.setState({
+              item: data.item,
+              is_playing: data.is_playing,
+              progress_ms: data.progress_ms
+            });
+          }
         });
       }
     });
